@@ -1,1 +1,31 @@
+name: CI Workflow
+
+permissions:  # Specify permissions for the workflow
+  contents: write  # Example permission for reading repository contents
+  issues: read  # Example permission for reading issues
+
 on:
+    push:
+        paths:
+            - "knn_model.joblib"
+
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v4
+            
+            - name: Set up python
+              uses: actions/setup-python@v4
+              with:
+                python-version: '3.12'
+
+            - name: Install dependencies
+              run: |
+                pip install -r requirements.txt
+
+            - name: Run fast api tests
+              run: uvicorn main:app --reload
+                
