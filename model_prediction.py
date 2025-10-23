@@ -22,3 +22,4 @@ r2 = r2_score(y_test, ypred)
 print("R2 Score:", r2)
 
 joblib.dump(model, 'knn_model.joblib')
+joblib.dump(scaler, 'scaler.joblib')
