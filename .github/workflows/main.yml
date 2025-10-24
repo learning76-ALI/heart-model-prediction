@@ -8,7 +8,7 @@ on:
     push:
         paths:
             - "knn_model.joblib"
-            - "main.yml"
+            - ".github/workflows/main.yml"  # Fixed the path to main.yml
 
 
 jobs:
