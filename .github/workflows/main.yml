@@ -51,9 +51,10 @@ jobs:
             - name: Build and push image
               uses: docker/build-push-action@v6
               with:
-                context: .
-                push: true
-                tags: alireza762911/my-api:latest
+                  context: ./app
+                  file: ./app/Dockerfile
+                  push: true
+                  tags: alireza762911/my-api:latest
 
               
                 
