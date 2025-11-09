@@ -54,7 +54,7 @@ jobs:
                   context: .
                   file: ./Dockerfile
                   push: true
-                  tags: alireza762911/my-api:latest
+                  tags: ${{ secrets.DOCKERHUB_USERNAME }}/my-api:latest
 
               
                 
