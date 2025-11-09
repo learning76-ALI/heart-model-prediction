@@ -45,13 +45,15 @@ jobs:
                 username: ${{ secrets.DOCKERHUB_USERNAME }}
                 password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-            # Removed the unnecessary step for setting up Docker build
+            - name: Set up Docker buildx
+              uses: docker/setup-buildx-action@v2        
             
             - name: Build and push image
               uses: docker/build-push-action@v6
               with:
                   context: .
                   push: true
+                  platforms: linux/amd64,linux/arm64  # Specify the platforms for the build
                   tags: ${{ secrets.DOCKERHUB_USERNAME }}/my-api:latest
 
               
