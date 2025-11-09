@@ -33,5 +33,24 @@ jobs:
                   uvicorn main:app --host 0.0.0.0 --port 8000 &
                   sleep 5
                   curl -f http://127.0.0.1:8000/docs
+    
+    docker:
+        needs: build
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: login to docker hub
+              uses: docker/login-action@v2
+              with:
+                username: ${{ secrets.DOCKERHUB_USERNAME }}
+                password: ${{ secrets.DOCKERHUB_TOKEN }}
+            
+            - name: Build and push image
+              uses: docker/build-push-action@v6
+              with:
+                context: .
+                push: true
+                tags: your_dockerhub_username/fastapi-app:latest
+
               
                 
