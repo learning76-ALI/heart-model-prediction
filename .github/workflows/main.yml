@@ -8,7 +8,7 @@ on:
     push:
         paths:
             - "knn_model.joblib"
-            - ".github/workflows/main.yml"  # Fixed the path to main.yml
+            - ".github/workflows/main"  # Fixed the path to main.yml
             - "requirements.txt"
 
 
